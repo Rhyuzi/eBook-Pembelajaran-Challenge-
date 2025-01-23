@@ -15,39 +15,41 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         </head>
 
-        <form method="POST" action="{{ route('login') }}" class="p-4 border rounded shadow-sm bg-light">
-            @csrf
+        <div class="d-flex justify-content-center align-items-center min-vh-100">
+            <form method="POST" action="{{ route('login') }}" class="p-4 border rounded shadow-sm bg-dark text-light w-100" style="max-width: 400px;">
+                @csrf
 
-            <!-- Email Address -->
-            <div class="mb-3">
-                <x-label for="email" :value="__('Email')" />
-                <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+                <!-- Email Address -->
+                <div class="mb-3">
+                    <x-label for="email" :value="__('Email')" />
+                    <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+                </div>
 
-            <!-- Password -->
-            <div class="mb-3">
-                <x-label for="password" :value="__('Password')" />
-                <x-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
-            </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <x-label for="password" :value="__('Password')" />
+                    <x-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
+                </div>
 
-            <!-- Remember Me -->
-            <div class="mb-3 form-check">
-                <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                <label for="remember_me" class="form-check-label text-muted">{{ __('Remember me') }}</label>
-            </div>
+                <!-- Remember Me -->
+                <div class="mb-3 form-check ">
+                    <input id="remember_me" type="checkbox" class="form-check-input text-light" name="remember">
+                    <label for="remember_me" class="form-check-label">{{ __('Remember me') }}</label>
+                </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-                @if (Route::has('password.request'))
-                    <a class="text-muted" href="{{ route('register') }}">
-                        {{ __('Register') }}
-                    </a>
-                @endif
+                <div class="d-flex justify-content-between align-items-center">
+                    @if (Route::has('password.request'))
+                        <a class="text-light" href="{{ route('register') }}">
+                            {{ __('Register') }}
+                        </a>
+                    @endif
 
-                <x-button class="btn btn-primary">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
+                    <x-button class="btn btn-primary">
+                        {{ __('Log in') }}
+                    </x-button>
+                </div>
+            </form>
+        </div>
 
         <!-- Menambahkan CDN untuk Bootstrap JS (optional, hanya untuk fitur tertentu seperti dropdowns) -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

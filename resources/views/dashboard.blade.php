@@ -1,32 +1,53 @@
-<h1>Dashboard</h1>
-<table>
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama eBook</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($ebooks as $key => $ebook)
-            <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $ebook->title }}</td>
-                <td>
-                    <a href="{{ route('ebook.show', $ebook->id) }}">Lihat</a>
-                    <form action="{{ route('ebook.destroy', $ebook->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 
-<!-- Tombol Logout -->
-<form action="{{ route('logout') }}" method="POST" style="margin-top: 20px;">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+    <!-- CDN Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Dashboard</h1>
+
+        <!-- Tabel eBooks -->
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama eBook</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($ebooks as $key => $ebook)
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $ebook->title }}</td>
+                        <td>
+                            <a href="{{ route('ebook.show', $ebook->id) }}" class="btn btn-info btn-sm">Lihat</a>
+                            <form action="{{ route('ebook.destroy', $ebook->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <!-- Tombol Logout -->
+        <form action="{{ route('logout') }}" method="POST" style="margin-top: 20px;">
+            @csrf
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    </div>
+
+    <!-- CDN Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
