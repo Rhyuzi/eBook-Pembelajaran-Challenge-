@@ -16,6 +16,10 @@ use App\Http\Controllers\EbookController;
 */
 
 Route::get('/', function () {
+    // Cek apakah pengguna sudah login
+    if (auth()->guest()) {
+        return redirect()->route('login');  // Redirect ke halaman login jika belum login
+    }
     return view('welcome');
 });
 

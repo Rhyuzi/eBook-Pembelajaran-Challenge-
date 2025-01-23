@@ -24,3 +24,9 @@
         @endforeach
     </tbody>
 </table>
+
+<!-- Tombol Logout -->
+<form action="{{ route('logout') }}" method="POST" style="margin-top: 20px;">
+    @csrf
+    <button type="submit">Logout</button>
+</form>
